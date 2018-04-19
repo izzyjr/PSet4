@@ -5,21 +5,6 @@
 #include <stdbool.h>
 #include "bmp.h"
 
-    //open the card.raw file and check for null
-    //read in 512 bytes from card.raw until EOF
-        //if we find the header pattern of bytes
-            //if we have found the first jpg
-                //change the boolean value
-                //write in the bytes into a separate file
-            //else
-                // close the previous file
-                //write in the bytes into a new file
-        //else
-            //if we have found the first jpg
-                //continue to to write the bytes
-    //close all files and free the memory used
-    //
-
 int main(int argc, char *argv[])
 {
     // ensure proper usage
@@ -36,7 +21,6 @@ int main(int argc, char *argv[])
         return 0;
     }
 
-    //read in 512 bytes from card.raw until EOF
     BYTE array[512];
     FILE* newJpg;
     bool jpgFound = false;
@@ -56,8 +40,6 @@ int main(int argc, char *argv[])
                 {
                     return 0;
                 }
-
-
                 fwrite(array, 1, 512, newJpg);
             }
             else
@@ -71,8 +53,6 @@ int main(int argc, char *argv[])
                 {
                     return 0;
                 }
-
-
                 fwrite(array, 1, 512, newJpg);
             }
         }
@@ -86,6 +66,4 @@ int main(int argc, char *argv[])
     }
     fclose(newJpg);
     fclose(memory);
-
-
 }
